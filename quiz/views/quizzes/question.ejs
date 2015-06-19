@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Quiz</title>
+  </head>
+  <body>
+    <h2>Quiz: la app de preguntas y respuestas</h2>
+    <p>
+      <form method="get" action="/quizzes/answer">
+        <p>Pregunta: <%= pregunta %></p>
+        <input type="text" name="respuesta" value="Tu respuesta">
+        <input type="submit" value="Enviar">
+      </form>
+    </p>
+  </body>
+</html>
