@@ -1,8 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.highlight{
+  color: rgb(29, 181, 172);
+  margin-bottom: 0.75em;
+}
+
+/***************
+   HEADER
+ **************/
+header{
+  padding: 1em;
+  width: 100%;
+  text-align: center;
+}
+
+header h2{
+  font-size: 2em;
+}
+
+/***************
+   NAVIGATION
+ **************/
+.navigation ul{
+  list-style: none;
+}
+.navigation li{
+  margin-right: 1em;
+  padding:0.25em 0.75em 0.25em 0.75em;
+  display: inline;
+  background-color: rgb(29, 181, 172);
+}
+.navigation li > a{
+  text-decoration: none;
+  color: white;
+}
+
+
+nav{
+  margin-left: 1em;
+  margin-bottom: 1.5em;
+}
+
+/***************
+   SECTION
+ **************/
+section{
+  margin-left: 2em;
+  text-align: center;
+}
+
+/***************
+   FOOTER
+ **************/
+footer {
+  position:fixed;
+  padding-top: 1em;
+  padding-left: 2em;
+  left:0px;
+  bottom:0px;
+  height:40px;
+  width:100%;
+  background:rgb(29, 181, 172);
 }

@@ -2,6 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/up_481px.css" media="only screen and (min-width: 481px) and (min-device-width: 481px)">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/less_480px.css" media="only screen and (max-width: 480px)">
   <title>Quiz</title>
   </head>
   <body>
@@ -9,10 +12,12 @@
       <h2>Quiz: la app de las preguntas y respuestas en nodeJS</h2>
     </header>
 
-    <nav>
+    <nav class="navigation">
       <ul>
         <li>
           <a href="/">Inicio</a>
+        </li>
+        <li>
           <a href="/quizzes/question">Preguntas</a>
         </li>
       </ul>
@@ -22,9 +27,9 @@
       <%- body %>
     </section>
 
-    <footer>
+    <footer class="navigation">
       <ul>
-        <li><a href="#">¿Qué es un quiz?</a></li>
+        <li><a href="https://es.wikipedia.org/wiki/Quiz">¿Qué es un quiz?</a></li>
       </ul>
     </footer>
   </body>
