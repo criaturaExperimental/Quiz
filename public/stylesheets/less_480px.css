@@ -2,11 +2,20 @@ nav{
   border-bottom: 3px solid rgb(29, 181, 172);
 }
 
-
 header{
   text-align: left;
+  padding-right: 0.25em;
 }
 
 section{
   text-align: left;
+  padding-bottom: 120px;
+}
+
+footer{
+  height: 60px;
+}
+
+footer li{
+  display: block;
 }

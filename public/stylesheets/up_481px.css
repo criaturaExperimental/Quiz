@@ -1,5 +1,6 @@
 body{
   font-size: 1.5em;
+  padding-right: 2em;
 }
 
 footer{
@@ -21,7 +22,7 @@ header{
   border-bottom: 6px solid rgb(29, 181, 172);
 }
 
-.navigation li{
+nav li{
   display: block;
 }
 
