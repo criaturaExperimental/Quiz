@@ -16,11 +16,24 @@ exports.load = function(req, res, next, quizId) {
 
 // GET /quizzes
 exports.index = function(req, res) {
-  models.Quiz.findAll().then(
-    function (quizzes) {
-      res.render( 'quizzes/index', { quizzes: quizzes });
+  if (!req.query.search) {
+    models.Quiz.findAll().then(function(quizzes){
+      res.render( 'quizzes/index.ejs', { quizzes: quizzes } );
     }
-  ).catch(function(error) { next(error);})
+    ).catch(function(error) {next(error);})
+  } else {
+    // delimitar el string contenido en search con el comodín % antes y después cambie también
+    // los espacios en blanco por %. De esta forma, si busca "uno dos" ("%uno%dos%"),
+    // mostrará todas las preguntas que tengan "uno" seguido de "dos", independientemente
+    // de lo que haya entre "uno" y "dos".
+    models.Quiz.findAll(
+      {
+        where: [ "lower(pregunta) like lower(?)", "%"+req.query.search.split(" ").join("%")+"%" ]
+      }).then( function(quizzes) {
+        res.render( 'quizzes/index.ejs', { quizzes: quizzes.sort() } );
+      }
+    ).catch(function(error) {next(error);})
+  };
 }
 
 // GET /quizes/:id

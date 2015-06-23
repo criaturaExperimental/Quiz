@@ -63,6 +63,25 @@ section{
 }
 
 /***************
+   TABLES
+ **************/
+ table{
+   border: 4px solid rgb(29, 181, 172);
+   padding: 0.25em;
+ }
+
+ /***************
+    SEARCH
+  **************/
+ .search{
+   margin-top: 2em;
+ }
+
+ .search form{
+   text-align: left;
+ }
+
+/***************
    FOOTER
  **************/
 footer {
