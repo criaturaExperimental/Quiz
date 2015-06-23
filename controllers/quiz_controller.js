@@ -1,19 +1,38 @@
 var models = require('../models/models.js');
 
-// GET /quizzes/question
-exports.question = function(req, res){
-  models.Quiz.findAll().then(function(quiz){
-    res.render('quizzes/question', {pregunta: quiz[0].pregunta});
-  })
+// Autoload - factoriza el código si ruta incluye :quizId
+exports.load = function(req, res, next, quizId) {
+  models.Quiz.findById(quizId).then(
+    function(quiz) {
+      if (quiz) {
+        req.quiz = quiz;
+        next();
+      } else {
+        next(new Error('No existe quizId=' + quizId));
+      }
+    }
+  ).catch(function(error) {next(error);})
 };
 
-// GET /quizzes/answer
-exports.answer = function(req, res){
-  models.Quiz.findAll().then(function(quiz){
-    if (req.query.respuesta === quiz[0].respuesta){
-      res.render('quizzes/answer', {respuesta: 'Correcto'});
-    } else {
-      res.render('quizzes/answer', {respuesta: 'Incorrecto'});
+// GET /quizzes
+exports.index = function(req, res) {
+  models.Quiz.findAll().then(
+    function (quizzes) {
+      res.render( 'quizzes/index', { quizzes: quizzes });
     }
-  })
+  ).catch(function(error) { next(error);})
+}
+
+// GET /quizes/:id
+exports.show = function(req, res) {
+  res.render( 'quizzes/show', { quiz: req.quiz } );
+};
+
+// GET /quizes/:id/answer
+exports.answer = function(req, res) {
+  var resultado = 'Incorrecto';
+  if ( req.query.respuesta === req.quiz.respuesta ) {
+    resultado = '¡Correcto!';
+  }
+  res.render( 'quizzes/answer', { quiz: req.quiz, respuesta: resultado } );
 };

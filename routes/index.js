@@ -13,10 +13,12 @@ router.get('/author', function(req, res, next) {
   res.render('author', { author: 'Lucas deGomez'});
 });
 
+// Autolad de comandos con :quizId
+router.param('quizId', quizController.load);
 
-/* GET question and answer */
-router.get('/quizzes/question', quizController.question);
-router.get('/quizzes/answer', quizController.answer);
-
+/* GET de preguntas y respuestas a través de rutas */
+router.get('/quizzes',                      quizController.index);
+router.get('/quizzes/:quizId(\\d+)',        quizController.show);
+router.get('/quizzes/:quizId(\\d+)/answer', quizController.answer);
 
 module.exports = router;
