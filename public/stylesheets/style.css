@@ -81,6 +81,7 @@ section{
  table{
    border: 4px solid rgb(29, 181, 172);
    padding: 0.25em;
+   text-align: left;
  }
 
  /***************
