@@ -17,6 +17,11 @@ a {
   margin-bottom: 0.75em;
 }
 
+#ErrorMsgs{
+  color: #f61;
+  font-size: smaler
+}
+
 /***************
    HEADER
  **************/
@@ -51,6 +56,10 @@ nav li > a{
 nav{
   margin-left: 1em;
   margin-bottom: 1.5em;
+}
+
+nav span{
+  margin: 0px 10px 0px 0px;
 }
 
 /***************
