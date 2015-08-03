@@ -1,19 +1,31 @@
 <div class="">
-	<table>
-	<% var i; for (i=0; i < quizzes.length; i++) { %>
-	<tr>
-		<td><a href="quizzes/<%= quizzes[i].id %>"><%= quizzes[i].pregunta %></a></td>
-		<td><a href="quizzes/<%= quizzes[i].id %>/edit"><button>editar</button></a></td>
-		<td>
-		<form method="post" action="quizzes/<%= quizzes[i].id %>?_method=delete">
-			<button type="submit" onClick="return confirm('Borrar: <%= quizzes[i].pregunta %>');">
-				borrar
-			</button>
-		</form>
-	</td>
-	</tr>
-	<% } %>
-	</table>
+26 lines (26 sloc) 0.857 kB
+<table>
+ <tr>
+	 <td></td>
+	 <th>
+		 <form method="get" action="/quizzes">
+		 <input type="text" name="search" placeholder="Buscar preguntas" size="10">
+		 <input type="submit" value="Enviar">
+		 </form>
+	 </th>
+ </tr>
+ <% var i; for (i=0; i < quizzes.length; i++) { %>
+	 <tr>
+		 <td><%=  quizzes[i].categoria %></td>
+		 <td><a href="/quizzes/<%= quizzes[i].id %>"><%= quizzes[i].pregunta %></a></td>
+		 <td><a href="/quizzes/<%= quizzes[i].id %>/edit"><button>Editar</button></a></td>
+		 <td>
+					 <form method="post" action="/quizzes/<%= quizzes[i].id %>?_method=delete">
+						 <button type="submit" onClick="return confirm('Borrar: <%= quizzes[i].pregunta %>');">
+							 Borrar
+						 </button>
+					 </form>
+				</td>
+	 </tr>
+ <% } %>
+</table><br>
+<p><a href="/quizzes/new"><button type="button">Crear pregunta</button></a></p>
 </div>
 <div class="search">
 	<form action="/quizzes" method="get">
