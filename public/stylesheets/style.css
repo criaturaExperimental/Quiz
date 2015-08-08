@@ -22,6 +22,10 @@ a {
   font-size: smaler
 }
 
+.right{
+  float: right;
+}
+
 /***************
    HEADER
  **************/
