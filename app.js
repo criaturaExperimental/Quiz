@@ -25,6 +25,25 @@ app.use(methodOverride('_method'));
 app.use(cookieParser('Quiz 2015'));
 app.use(session());
 
+/* Middleware para capturar el tiempo en el que se ejecuta una petición http. Destruye
+la session si ha superado los 2 minutos de inactividad. Además, redirigirá a la página
+de loggin si esto ocurre
+*/
+app.use(function(req, res, next){
+    var definedTimeout = 2*60*1000;
+
+    if (req.session.user){
+        if (req.session.timeout < new Date().getTime()){
+            delete req.session.timeout; //Reseteamos el tiempo de timeout
+            delete req.session.user; //Borramos la session del usuario
+        }else{
+            req.session.timeout = new Date().getTime() + definedTimeout;
+        }
+    }
+
+    next();
+});
+
 // Helpers dinamicos:
 app.use(function(req, res, next) {
 
